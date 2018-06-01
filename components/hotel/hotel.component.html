@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="text-center">
+   <h1>Available Rooms in this hotel</h1>
+
+  
+
+  </div>
+  <div class="rooms-container">
+
+      
+      <div class="room" *ngFor="let room of rooms">
+          <div class="pad-10">
+            <div>Room number : {{room.roomNumber}}</div>
+            <div>Category: {{room.class}}</div>
+            <div>Price : {{room.price}} tk</div>
+            
+            <div> 
+                <span *ngIf="room.wifi">Free Wifi</span>
+                  <span *ngIf="room.tv">
+                     Free TV 
+                  </span>
+                </div>
+
+
+
+          </div>
+          
+          <div class="booknowbtn" (click)="goTobook(room.id)">
+            Book now
+          </div>
+   
+   
+       </div>
+    
+    </div>
+</div>
+

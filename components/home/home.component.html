@@ -1,0 +1,59 @@
+<div class="bg-color-red">
+    <div class="text-center padstyle">
+         
+
+         <div class="form-group max-size-400">
+             <input type="text" class="form-control" id="email" 
+             placeholder="search hotels by location"
+             [(ngModel)]= "placeName"
+              name="pn"
+              #pn="ngModel"
+             >
+          </div>
+          <div class="max-size-400">
+              <div class="rf-button" (click)="onSearch()">Search</div>
+           </div>
+
+          
+    </div>
+
+   
+</div>
+<div class="container" *ngIf="showLoading">
+     
+     <app-big-loading>
+
+     </app-big-loading>
+</div>
+<div class="container" *ngIf="showError">
+      
+     <div class="error">
+          Sorry. Network error.
+     </div>
+
+      
+</div>
+
+<div class="container" *ngIf="componentloaded && !showError && !showLoading|| 1==1">
+    
+    
+    <div class="result-container" >
+         <div class="hotel-block" *ngFor="let hotel of hotels" 
+         (click)="selectHotel(hotel.place_id)">
+            <div class="hotel-name">
+                {{hotel.name}}
+            </div>
+            <div class="hotel-rating">
+                {{hotel.rating}}
+            </div>
+            <div class="hotel-address">
+                {{hotel.vicinity}}
+            </div>
+            
+         </div>
+        
+
+     </div>   
+</div>
+<div style="margin:300px;">
+</div>

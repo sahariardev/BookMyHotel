@@ -1,0 +1,80 @@
+
+<div *ngIf="showLoading">
+    <app-big-loading></app-big-loading>
+</div>
+
+
+<div *ngIf="!showLoading">
+
+    <div class="text-center" *ngIf="alreadyBookeDates.length != 0">
+        <h2>This room is already booked for these days: </h2>
+        <div class="block" *ngFor="let bookedDate of alreadyBookeDates">
+                {{bookedDate.date}}
+        </div>    
+    </div> 
+<div class="container mar-top-30">
+<div class="form max-width-400">
+            <div class="form-group">
+
+                
+                <br/>
+                    <div class="error" *ngIf="showDateError">
+                        {{singleDateInputErrorMsg}}
+                    </div>
+                    <mat-form-field class="example-full-width">
+                            <input matInput [matDatepickerFilter]="myFilter" 
+                            [matDatepicker]="picker"
+                            placeholder="Choose a date"
+                            (dateInput)="dateChange($event)"
+                            disabled
+                            >
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker disabled="false"></mat-datepicker>
+                          </mat-form-field>
+              </div>
+              <div>
+                    <div *ngFor="let date of userInputDates" class="block fixblock">
+                        {{date}}
+                    </div>
+              </div>
+
+              <button type="submit" class="btn btn-danger" (click)="addDate()">Add</button>
+              <button type="submit" class="btn btn-danger mar-left-5" (click)="clear()">Clear</button>
+</div>
+</div>
+
+<div class="container mar-top-30 mar-bottom-30">
+        <div class="max-width-400 ">
+    <div class="max-width-400">
+            <div class="form-group max-size-400">
+                    <input type="text" class="form-control" 
+                    placeholder="Name"
+                    [(ngModel)]= "formdata.name"
+                     name="Fname"
+                     #Fname="ngModel"
+                    >
+            </div>
+            <div class="form-group max-size-400">
+                    <input type="text" class="form-control"  
+                    placeholder="email"
+                    [(ngModel)]= "formdata.email"
+                     name="Femail"
+                     #Femail="ngModel"
+                    >
+            </div>
+            <div class="form-group max-size-400">
+                    <input type="text" class="form-control"  
+                    placeholder="phonenumber"
+                    [(ngModel)]= "formdata.number"
+                     name="Fnumber"
+                     #Fnumber="ngModel"
+                    >
+            </div>
+            <div class="error" *ngIf="showFormError">
+                    {{FormDataErrorMsg}}
+                </div>
+            <button type="submit" class="btn btn-danger" (click)="book()">Book</button>
+     </div>
+</div>
+
+</div>

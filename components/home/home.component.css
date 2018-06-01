@@ -1,0 +1,81 @@
+.bg-color-red
+{
+    background-color: #ff3d3dcc;;
+    color: white;
+}
+.mar-top-30
+{
+    margin-top: 30px;
+}
+.mar-bottom-30
+{
+    margin-bottom: 30px;
+}
+text-center
+{
+    text-align: center;
+}
+.padstyle
+{
+    padding: 100px;
+}
+.max-size-400
+{
+    max-width: 400px;
+    margin: auto;
+}
+.rf-button {
+    background-color: #FF4040; /* Green */
+    border: none;
+    color: white;
+    padding: 12px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin: 30px;
+}
+.rf-button:hover
+{
+    border-left: 3px solid white;
+    border-right: 3px solid white;
+}
+.error
+{
+    font-size: 20px;
+    color: black;
+    text-align: center;
+    margin: 30px;
+}
+.result-container
+{
+    margin-top:100px; 
+}
+.hotel-block
+{
+    width: 300px;
+    height: 100px;
+    box-shadow: 0 0 4px 0px gray;
+    cursor: pointer;
+    display: inline-grid;
+    margin: 10px;
+}
+.hotel-name
+{
+    font-weight: 900;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.hotel-rating
+{
+    text-align: center;
+}
+.hotel-address
+{
+    font-size: 13px;
+    padding: 5px;
+    text-align: center;
+}
