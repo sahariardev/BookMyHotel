@@ -1,4 +1,9 @@
-
+<div *ngIf="serviceNotAvailable" style="text-align: center;
+margin-top: 100px;
+font-size: 29px;">
+ Sorry!Service is not available right now.
+</div>
+<div *ngIf="!serviceNotAvailable">
 <div class="rf-modal" *ngIf="showModal">
    <div class="rf-modal-container">
        
@@ -94,4 +99,5 @@
      <a href="#" routerLink="/delete">Delete your booking here.</a>
     </div>
 
+</div>
 </div>

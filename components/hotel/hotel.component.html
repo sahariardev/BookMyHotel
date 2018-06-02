@@ -5,7 +5,7 @@
   
 
   </div>
-  <div class="rooms-container">
+  <div class="rooms-container text-center">
 
       
       <div class="room" *ngFor="let room of rooms">
@@ -25,7 +25,7 @@
 
           </div>
           
-          <div class="booknowbtn" (click)="goTobook(room.id)">
+          <div class="booknowbtn redbg" (click)="goTobook(room.id)">
             Book now
           </div>
    
@@ -35,3 +35,52 @@
     </div>
 </div>
 
+<div *ngIf="!showLoading">
+<div class="container mar-50" *ngIf="data.length>0">
+    <h2 class="text-center">Reviews</h2>
+  <div class="review-container" *ngFor="let review of data">
+     <div class="review">
+       {{review.review}}
+     </div>
+     <div class="review-author">
+       reviewd by {{review.email}}
+     </div>
+
+  </div>
+
+
+</div>
+
+
+<div class="container text-center mar-50">
+    <h2 class="text-center">Write your review</h2>
+    <div class="max-width-400">
+        <div class="form-group max-size-400">
+                <input type="text" class="form-control" 
+                placeholder="email"
+                [(ngModel)]= "reviewData.email"
+                 name="Fid"
+                 #Fid="ngModel"
+                >
+        </div>
+        <textarea class="form-control" rows="5" id="comment" 
+        placeholder="your review"
+        [(ngModel)]="reviewData.review"
+        name="reviewdetails"
+        #reviewDetail="ngModel"
+        
+        ></textarea>
+        
+        <div class="error" *ngIf="showError" style="margin-bottom: 10px;">
+                {{errorMessage}}
+            </div>
+        <button  class="btn btn-danger" style="margin-top: 20px" (click)="save()">Submit</button>
+ </div>
+
+</div>
+
+</div>
+
+<div *ngIf="showLoading" class="text-center mar-50">
+  <app-big-loading></app-big-loading>
+</div>

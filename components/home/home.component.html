@@ -34,22 +34,24 @@
       
 </div>
 
-<div class="container" *ngIf="componentloaded && !showError && !showLoading|| 1==1">
+<div style="text-align: center" class="container" *ngIf="componentloaded && !showError && !showLoading|| 1==1">
     
     
     <div class="result-container" >
+        
          <div class="hotel-block" *ngFor="let hotel of hotels" 
          (click)="selectHotel(hotel.place_id)">
+         <a href="#" routerLink="/hotel/{{hotel.place_id}}" >
             <div class="hotel-name">
                 {{hotel.name}}
             </div>
             <div class="hotel-rating">
-                {{hotel.rating}}
+                Rating: {{hotel.rating}}
             </div>
             <div class="hotel-address">
                 {{hotel.vicinity}}
             </div>
-            
+            </a>
          </div>
         
 

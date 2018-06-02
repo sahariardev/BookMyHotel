@@ -48,6 +48,7 @@ export class BookComponent implements OnInit {
       
     
   }
+  serviceNotAvailable=false;
   constructor(
     private route:ActivatedRoute,
     private router:Router,
@@ -88,12 +89,16 @@ export class BookComponent implements OnInit {
       dates:[]
       
     
-  }  
+     }  
     this.clear();
     this.http.get(this.bookedUrl+this.hotelId+"/"+this.roomId).subscribe(res =>{
       this.alreadyBookeDates=<any>res; 
+      this.serviceNotAvailable=false; 
       this.showLoading=false;
-    
+      
+     },fail => {
+      this.showLoading=false;
+      this.serviceNotAvailable=true;
      });
   }
   addDate()
