@@ -1,4 +1,18 @@
 
+<div class="rf-modal" *ngIf="showModal">
+   <div class="rf-modal-container">
+       
+       <div class="rf-modal-message">
+           Your room has been booked successfully with id {{bookingId}}.
+       </div>
+       <div class="rf-modal-btn">
+       <button  class="btn btn-default" (click)="okay()">Okay</button>
+       </div>
+
+   </div>
+</div>
+
+
 <div *ngIf="showLoading">
     <app-big-loading></app-big-loading>
 </div>
@@ -76,5 +90,8 @@
             <button type="submit" class="btn btn-danger" (click)="book()">Book</button>
      </div>
 </div>
+ <div class="text-center"> 
+     <a href="#" routerLink="/delete">Delete your booking here.</a>
+    </div>
 
 </div>

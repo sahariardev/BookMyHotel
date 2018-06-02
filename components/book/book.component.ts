@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Router,ActivatedRoute,Params} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+
+declare var $ :any;
+
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -24,7 +27,8 @@ export class BookComponent implements OnInit {
   FormDataErrorMsg="";
   showFormError=false;
   showLoading=false;
-
+  bookingId=null;
+  showModal=false;
   user={
     name:'',
     email:'',
@@ -65,14 +69,29 @@ export class BookComponent implements OnInit {
 
   }
 
-  
+  okay()
+  {
+    this.bookingId=null;
+    this.showModal=false;
+    this.init();
+  }
   init()
   {
     this.showLoading=true;
-    this.http.get(this.bookedUrl+this.hotelId+"/"+this.roomId).subscribe(res =>{
-      this.alreadyBookeDates=<any>res;
+    this.formdata={
+    
+      name : "",
+      email:"",
+      number:"",
+      hotel_id:null,
+      room_id:null,
+      dates:[]
       
-      console.log(this.alreadyBookeDates); 
+    
+  }  
+    this.clear();
+    this.http.get(this.bookedUrl+this.hotelId+"/"+this.roomId).subscribe(res =>{
+      this.alreadyBookeDates=<any>res; 
       this.showLoading=false;
     
      });
@@ -124,27 +143,33 @@ export class BookComponent implements OnInit {
 
 book()
 {
+  this.showLoading=true;
   this.showFormError=false;
   if(this.userInputDates.length == 0)
   {
+    this.showLoading=false;
     this.FormDataErrorMsg="You have to add dates first";
     this.showFormError=true;
 
   }
   else if(this.formdata.email == "" || this.formdata.name =="" || this.formdata.number == "" )
   {
+    this.showLoading=false;
     this.FormDataErrorMsg="Please fill all fields.";
     this.showFormError=true;
   }
   else
   {
+    
     this.formdata.hotel_id=this.hotelId;
     this.formdata.room_id=this.roomId;
     this.formdata.dates=this.userInputDates;
     this.http.post(this.url+"/add",this.formdata).subscribe(res => {
-     console.log(res);
-     this.showLoading=true;
-     this.init();
+      this.showLoading=false;
+      console.log("Getting the booking id :");
+      console.log(res);
+      this.bookingId=res;
+      this.showModal=true;
 
     });
   }
@@ -187,17 +212,17 @@ myFilter = (d: Date): boolean => {
 }
 dateChange(event: MatDatepickerInputEvent<Date>)
    {
-     console.log("triggered");
+     
      
      let date=this.getFormattedDate(event.value);
      this.enteredDate=date;
-     console.log(this.enteredDate);
+     
    }
 
    getFormattedDate(d:Date)
    {
       let m:any=d.getMonth()+1;
-      console.log(m);
+      
      if(m<10)
      {
 

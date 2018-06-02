@@ -19,6 +19,7 @@ import { HomeComponent } from './components/home/home.component';
 import { BigLoadingComponent } from './components/big-loading/big-loading.component';
 import { HotelComponent } from './components/hotel/hotel.component';
 import { BookComponent } from './components/book/book.component';
+import { DeleteComponent } from './components/delete/delete.component';
 
 const appRoutes:Routes=[
   {
@@ -29,6 +30,9 @@ const appRoutes:Routes=[
   },
   {
     path:'book/:hotelid/:roomid',component:BookComponent
+  },
+  {
+    path:'delete',component:DeleteComponent
   }
 ] 
 @NgModule({
@@ -37,7 +41,8 @@ const appRoutes:Routes=[
     HomeComponent,
     BigLoadingComponent,
     HotelComponent,
-    BookComponent
+    BookComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,
